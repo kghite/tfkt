@@ -1,4 +1,5 @@
 pynecone.db
 .web
 
-__pycache__
+__pycache____pycache__/
+*.py[cod]

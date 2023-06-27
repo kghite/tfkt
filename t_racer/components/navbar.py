@@ -1,5 +1,7 @@
 import pynecone as pc
 
+from t_racer.state import State, LoginState
+
 
 def navbar():
     return pc.box(
