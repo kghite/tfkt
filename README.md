@@ -1,6 +1,12 @@
-# TRacer - Generate and log MBTA world record routes in real time
+<div align="center">
+
+# TFKT
+
+**Generate and log MBTA Fastest Known Time routes in real time to guide your world record attempt**
 
 [🚉 Status](#-status) &nbsp; [🛠️ Develop](#-develop) &nbsp; [🛤️ Deploy](#-deploy) &nbsp; [💡 Credits](#-credits) &nbsp; [📖 License](#-license)
+
+</div>
 
 ---
 

@@ -1,0 +1,5 @@
+django
+django-admin-material-dashboard==1.0.10
+gunicorn
+python-dotenv
+whitenoise

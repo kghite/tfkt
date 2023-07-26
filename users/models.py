@@ -1,6 +1,7 @@
 from django.contrib.gis.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group
 
+from utils.file_utils import user_directory_path
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password, **kwargs):
@@ -40,8 +41,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
     objects = UserManager()
 
-    bio = models.CharField(max_length=1024, default=None, null=True)
-
     class Meta:
         verbose_name = 'User'
 
@@ -60,3 +59,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.CharField(max_length=1024, default=None, null=True)
+    profile_image = models.ImageField(default=None, null=True, upload_to=user_directory_path)
+
+    def __str__(self):
+        return self.user.email
