@@ -1,5 +1,6 @@
 django
 django-admin-material-dashboard==1.0.10
+django-leaflet
 gunicorn
 python-dotenv
 whitenoise

@@ -24,9 +24,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    # Theme
-    'admin_material.apps.AdminMaterialDashboardConfig',
-    # Apps
+    # External
+    'leaflet',
+    # TFKT Apps
     "challenges",
     "home",
     "planner_gis",

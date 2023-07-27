@@ -1,9 +1,25 @@
 {% extends "base.html" %}
-
-{% block content %}
+{% load leaflet_tags %}
+<html>
+  <head>
+    {% leaflet_js %}
+    {% leaflet_css %}
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
+  <title></title>
+</head>
+<body>
+  {% block content %}
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <h1>TFKT</h1>
+      <script>
+      function map_init_basic (map, options) {
+        ...
+        L.marker([50.5, 30.5]).addTo(map);
+        ...
+      }
+      </script> {% leaflet_map "yourmap" callback="window.map_init_basic" %}
     </div>
-  </div>
-{% endblock %}
+  </div>{% endblock %}
+</body>
+</html>
