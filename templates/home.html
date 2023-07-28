@@ -1,34 +1,41 @@
-{% extends "base.html" %} {% load static %} {% load leaflet_tags %}
-
+{% load static %} {% load leaflet_tags %}
+<html>
 <head>
-  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
     <title>TFKT</title>
     {% leaflet_js %} {% leaflet_css %}
     <style>
-      #map { height: 180px; }
+      .leaflet-container { height: 100%; }
     </style>
-    <script src="{% static 'js/leaflet.ajax.js' %}" charset="utf-8"></script>
-    <script type="text/javascript">
-      function place_pos(map, options){
-        var dataset = new L.GeoJSON.AJAX("{% url 'my_places' %}",{
-          onEachFeature: function(feature, layer){
-          layer.bindPopup(feature.properties.name)
-        }
-        });
-        dataset.addTo(map)
-       }</html>
+    <script>
+      var dataurl = '{% url "planner_gis:gis_data" %}';
+
+      window.addEventListener("map:init", function (event) {
+        var map = event.detail.map;
+        // Download GeoJSON data with Ajax
+        fetch(dataurl)
+          .then(function(resp) {
+            return resp.json();
+          })
+          .then(function(data) {
+            L.geoJson(data, {
+              onEachFeature: function onEachFeature(feature, layer) {
+                layer.bindPopup(feature.properties.name);
+            }}).addTo(map);
+          });
+      });
     </script>
 </head>
 <body>
-  {% block content %}
+
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <h1>TFKT</h1>{% for place in places %} place name: {{place.name}}<br>
       <small>{{place.distance}} away</small><br>
       {% endfor %}
       <div id="map">
-        {% leaflet_map "gis" callback="window.place_pos" %}
+        {% leaflet_map "main" %}
       </div>
     </div>
-  </div>{% endblock %}
+  </div>
 </body>
+<html>
