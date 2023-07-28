@@ -4,7 +4,7 @@ devel-install:
 	pip install -r requirements.txt -r develop/requirements.txt
 
 devel-tidy:
-	tidy -indent --indent-spaces 2 -quiet --tidy-mark no templates/*
+	tidy --indent-spaces 2 --tidy-mark no templates/*
 
 devel-makemigrations:
 	python manage.py makemigrations --settings=tfkt.settings.development

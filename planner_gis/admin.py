@@ -1,3 +1,11 @@
-from django.contrib import admin
+from django.contrib.gis import admin
 
-# Register your models here.
+from leaflet.admin import LeafletGeoAdmin
+
+from .models import Myplaces
+
+
+
+@admin.register(Myplaces)
+class MyplacesAdmin(LeafletGeoAdmin):
+    list_display = ('name', 'location',)

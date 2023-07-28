@@ -20,5 +20,6 @@ from django.urls import include, path
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include(('home.urls', 'home'), namespace='home')),
-    path('', include(('users.urls', 'users'), namespace='users'))
+    path('', include(('users.urls', 'users'), namespace='users')),
+    path('', include(('planner_gis.urls', 'planner_gis'), namespace='planner_gis')),
 ]

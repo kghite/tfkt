@@ -1,25 +1,34 @@
-{% extends "base.html" %}
-{% load leaflet_tags %}
-<html>
-  <head>
-    {% leaflet_js %}
-    {% leaflet_css %}
+{% extends "base.html" %} {% load static %} {% load leaflet_tags %}
+
+<head>
   <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
-  <title></title>
+    <title>TFKT</title>
+    {% leaflet_js %} {% leaflet_css %}
+    <style>
+      #map { height: 180px; }
+    </style>
+    <script src="{% static 'js/leaflet.ajax.js' %}" charset="utf-8"></script>
+    <script type="text/javascript">
+      function place_pos(map, options){
+        var dataset = new L.GeoJSON.AJAX("{% url 'my_places' %}",{
+          onEachFeature: function(feature, layer){
+          layer.bindPopup(feature.properties.name)
+        }
+        });
+        dataset.addTo(map)
+       }</html>
+    </script>
 </head>
 <body>
   {% block content %}
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <h1>TFKT</h1>
-      <script>
-      function map_init_basic (map, options) {
-        ...
-        L.marker([50.5, 30.5]).addTo(map);
-        ...
-      }
-      </script> {% leaflet_map "yourmap" callback="window.map_init_basic" %}
+      <h1>TFKT</h1>{% for place in places %} place name: {{place.name}}<br>
+      <small>{{place.distance}} away</small><br>
+      {% endfor %}
+      <div id="map">
+        {% leaflet_map "gis" callback="window.place_pos" %}
+      </div>
     </div>
   </div>{% endblock %}
 </body>
-</html>
