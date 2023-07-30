@@ -25,11 +25,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     # External
+    'django_bootstrap5',
     'leaflet',
     # TFKT Apps
     "challenges",
-    "home",
-    "planner_gis",
+    "planner",
     "users",
 ]
 
@@ -111,6 +111,8 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = "/"
 
 LEAFLET_CONFIG = {
     'SPATIAL_EXTENT': (5.0, 44.0, 7.5, 46),

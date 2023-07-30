@@ -1,41 +1,16 @@
-{% load static %} {% load leaflet_tags %}
-<html>
-<head>
-    <title>TFKT</title>
-    {% leaflet_js %} {% leaflet_css %}
-    <style>
-      .leaflet-container { height: 100%; }
-    </style>
-    <script>
-      var dataurl = '{% url "planner_gis:gis_data" %}';
+{% extends 'base.html' %}
+{% load static %}
 
-      window.addEventListener("map:init", function (event) {
-        var map = event.detail.map;
-        // Download GeoJSON data with Ajax
-        fetch(dataurl)
-          .then(function(resp) {
-            return resp.json();
-          })
-          .then(function(data) {
-            L.geoJson(data, {
-              onEachFeature: function onEachFeature(feature, layer) {
-                layer.bindPopup(feature.properties.name);
-            }}).addTo(map);
-          });
-      });
-    </script>
-</head>
-<body>
+{% block content %}
 
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <h1>TFKT</h1>{% for place in places %} place name: {{place.name}}<br>
-      <small>{{place.distance}} away</small><br>
-      {% endfor %}
-      <div id="map">
-        {% leaflet_map "main" %}
-      </div>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1>TFKT</h1>
+    <div id="map">
+      Hello, {{ user.username|default:'Guest' }}!
+      {% include "components/leaflet/map.html" %}
     </div>
   </div>
-</body>
-<html>
+</div>
+
+{% endblock %}
