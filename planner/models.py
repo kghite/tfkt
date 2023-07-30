@@ -5,6 +5,7 @@ from users.models import Profile
 from utils.file_utils import challenge_directory_path
 from utils.model_utils import Named
 
+
 class Stop(Named):
     location = models.PointField()
     # ID to query MBTA API for train info
@@ -33,8 +34,12 @@ class Segment(models.Model):
     ]
     travel_mode = models.IntegerField(choices=TRAVEL_MODES, default=T)
 
-    start_photo = models.ImageField(default=None, null=True, upload_to=challenge_directory_path)
-    end_photo = models.ImageField(default=None, null=True, upload_to=challenge_directory_path)
+    start_photo = models.ImageField(
+        default=None, null=True, upload_to=challenge_directory_path
+    )
+    end_photo = models.ImageField(
+        default=None, null=True, upload_to=challenge_directory_path
+    )
 
     start_datetime = models.DateTimeField(default=None, null=True)
     end_datetime = models.DateTimeField(default=None, null=True)
@@ -46,7 +51,9 @@ class Segment(models.Model):
 
 
 class Route(models.Model):
-    profiles = models.ManyToManyField(Profile, related_name='profiles', through='Attempt')
+    profiles = models.ManyToManyField(
+        Profile, related_name="profiles", through="Attempt"
+    )
     segments = models.ForeignKey(Segment, on_delete=models.CASCADE)
 
 

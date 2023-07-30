@@ -1,5 +1,6 @@
 from django.contrib.gis.db import models
 
+
 class Named(models.Model):
     name = models.CharField(max_length=32, default=None, null=True)
     description = models.CharField(max_length=128, default=None, null=True)

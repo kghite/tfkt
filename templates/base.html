@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>TFKT</title>
     {% load django_bootstrap5 %}
@@ -7,11 +8,17 @@
     {% bootstrap_javascript %}
     {% bootstrap_messages %}
 </head>
+
 <body>
+  <!-- Navigation -->
   {% include "components/navbar/navbar.html" %}
+  {% include "components/sidebar/sidebar.html" %}
+
   <div class="container-fluid">
     {% block content %}
+    <!-- Main Content -->
     {% endblock %}
   </div>
 </body>
+
 </html>

@@ -1,0 +1,5 @@
+.env.development
+.emv.production
+Dockerfile
+.git
+.gitignore

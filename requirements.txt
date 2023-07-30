@@ -3,4 +3,5 @@ django-admin-material-dashboard==1.0.10
 django-bootstrap5
 django-leaflet
 gunicorn
+psycopg2
 python-dotenv
