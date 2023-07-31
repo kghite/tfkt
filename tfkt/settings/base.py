@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.gis",
     # External
+    'crispy_forms',
+    "crispy_bootstrap5",
     "django_bootstrap5",
     "leaflet",
     # TFKT Apps
@@ -118,3 +120,7 @@ LEAFLET_CONFIG = {
     "MAX_ZOOM": 18,
     "DEFAULT_PRECISION": 6,
 }
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"

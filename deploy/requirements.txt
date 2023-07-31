@@ -1,6 +1,8 @@
+crispy-bootstrap5
 django
 django-admin-material-dashboard==1.0.10
 django-bootstrap5
+django-crispy-forms
 django-leaflet
 gunicorn
 psycopg2

@@ -2,7 +2,7 @@ from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         Group, PermissionsMixin)
 from django.contrib.gis.db import models
 
-from utils.file_utils import user_directory_path
+from utils.file_utils import constrain_profile_images, user_directory_path
 
 
 class UserManager(BaseUserManager):
@@ -68,10 +68,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    tag = models.CharField(max_length=16, default=None, null=True)
     bio = models.CharField(max_length=1024, default=None, null=True)
     profile_image = models.ImageField(
         default=None, null=True, upload_to=user_directory_path
     )
 
     def __str__(self):
-        return self.user.email
+        return self.tag if self.tag else self.user.email
+
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)
+
+        constrain_profile_images(self.image, (300, 300))
