@@ -71,7 +71,7 @@ class Profile(models.Model):
     tag = models.CharField(max_length=16, default=None, null=True)
     bio = models.CharField(max_length=1024, default=None, null=True)
     profile_image = models.ImageField(
-        default=None, null=True, upload_to=user_directory_path
+        default='default_profile.png', upload_to=user_directory_path
     )
 
     def __str__(self):
@@ -80,4 +80,4 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         super(Profile, self).save(*args, **kwargs)
 
-        constrain_profile_images(self.image, (300, 300))
+        constrain_profile_images(self.profile_image, (300, 300))

@@ -17,19 +17,24 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Guidelines</a>
         </li>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:profile' %}">Profile</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
     {% if request.user.is_authenticated %}
       <div class="nav-item dropdown me-2">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="d-none d-sm-inline mx-1">{{ user.email }}</span>
+            <span class="d-none d-sm-inline mx-1">{{ user.profile.tag|default:user.email }}</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><a class="dropdown-item" href="{% url 'users:logout' %}">Log Out</a></li>
         </ul>
       </div>
     {% else %}
-      <a class="nav-link text-black font-weight-bold" href="{% url 'home' %}">Login</a>
+      <a class="nav-link text-white" href="{% url 'users:login' %}">Log In</a>
     {% endif %}
 
   </div>

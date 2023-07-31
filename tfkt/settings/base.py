@@ -22,14 +22,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.gis",
     # External
-    'crispy_forms',
+    "crispy_forms",
     "crispy_bootstrap5",
     "django_bootstrap5",
     "leaflet",
     # TFKT Apps
     "challenges",
     "planner",
-    "users",
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +124,6 @@ LEAFLET_CONFIG = {
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

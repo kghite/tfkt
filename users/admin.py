@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from users import forms
-from users.models import User, Profile
+from users.models import Profile, User
 
 
 class UserAdmin(BaseUserAdmin):
@@ -12,7 +12,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = ("email",)
     list_filter = ("is_staff",)
     fieldsets = (
-        (None, {"fields": ("email", "s", "password")}),
+        (None, {"fields": ("email", "password")}),
         ("Permissions", {"fields": ("is_staff",)}),
     )
     add_fieldsets = (
@@ -27,3 +27,4 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(User, UserAdmin)
+admin.site.register(Profile)
