@@ -2,6 +2,8 @@
 
 # TFKT
 
+<img src="./static/tfkt_logo.png" alt="TFKT Logo" width="20%">
+
 **Generate and log MBTA Fastest Known Time routes in real time to guide your world record attempt**
 
 [🚉 Status](#-status) &nbsp; [🛠️ Develop](#-develop) &nbsp; [🛤️ Deploy](#-deploy) &nbsp; [💡 Credits](#-credits) &nbsp; [📖 License](#-license)

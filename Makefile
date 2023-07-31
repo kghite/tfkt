@@ -1,7 +1,7 @@
 # Development
 
 devel-install:
-	pip install -r requirements.txt -r develop/requirements.txt
+	pip install -r requirements.txt -r deploy/develop/requirements.txt
 
 devel-tidy:
 	tidy --indent-spaces 2 --tidy-mark no templates/*
@@ -25,7 +25,7 @@ devel-up:
 # Production
 
 install:
-	pip install -r requirements.txt
+	pip install -r deploy/requirements.txt
 
 check-deploy:
 	python manage.py check --deploy

@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /tftk
 
-COPY requirements.txt /tftk
+COPY deploy/requirements.txt /tftk
 RUN pip install -r requirements.txt \
   && rm requirements.txt
 
