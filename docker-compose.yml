@@ -1,13 +1,6 @@
 version: '3'
 
 services:
-    db:
-        image: postgis/postgis:15-3.3
-        restart: unless-stopped
-        volumes:
-            - ./data/db:/var/lib/postgresql/data
-        env_file:
-            - ./.env.production
 
     web:
         build:
@@ -18,10 +11,17 @@ services:
             - .:/tfkt
         ports:
             - "8000:8000"
+        environment:
+            DJANGO_SETTINGS_MODULE: tfkt.settings.development
         env_file:
             - ./.env.production
         depends_on:
             - db
 
-volumes:
-    db_data:
+    db:
+        image: postgis/postgis:15-3.3
+        restart: unless-stopped
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
+        env_file:
+            - ./.env.production

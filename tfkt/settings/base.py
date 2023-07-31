@@ -11,8 +11,6 @@ ENVIRONMENTS = {
 }
 ENV_FILE = None
 
-ALLOWED_HOSTS = []
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -25,7 +23,6 @@ INSTALLED_APPS = [
     "django.contrib.gis",
     # External
     "django_bootstrap5",
-    "leaflet",
     "leaflet",
     # TFKT Apps
     "challenges",
@@ -111,6 +108,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 LEAFLET_CONFIG = {
     "SPATIAL_EXTENT": (5.0, 44.0, 7.5, 46),

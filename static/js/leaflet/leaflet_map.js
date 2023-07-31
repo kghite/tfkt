@@ -1,4 +1,5 @@
-var dataurl = '{% url "planner:gis_data" %}';
+const data = document.currentScript.dataset;
+var dataurl = data.url;
 
 window.addEventListener("map:init", function (event) {
   var map = event.detail.map;

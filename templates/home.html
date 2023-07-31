@@ -3,14 +3,7 @@
 
 {% block content %}
 
-<div class="row">
-  <div class="col-md-8 offset-md-2">
-    <h1>TFKT</h1>
-    <div id="map">
-      Hello, {{ user.username|default:'Guest' }}!
-      {% include "components/leaflet/map.html" %}
-    </div>
-  </div>
-</div>
+  <h1>TFKT</h1>
+  {% include "components/leaflet/map.html" %}
 
 {% endblock %}

@@ -1,9 +1,5 @@
 {% load static %}
 
-<head>
-  <link rel="stylesheet" href="{% static 'css/navbar-top-fixed.css' %}">
-</head>
-
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">TFKT</a>
@@ -15,14 +11,21 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Guidelines</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
-        </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Need help? Ask Charlie" aria-label="Ask Charlie">
-        <button class="btn btn-outline-success" type="submit">Ask</button>
-      </form>
     </div>
+    {% if request.user.is_authenticated %}
+      <div class="nav-item dropdown me-2">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">{{ user.username|default:'Guest' }}</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+      </div>
+    {% else %}
+      <a class="nav-link text-black font-weight-bold" href="{% url 'home' %}">Login</a>
+    {% endif %}
+
   </div>
 </nav>

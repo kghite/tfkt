@@ -1,11 +1,14 @@
 {% load leaflet_tags %}
 {% load static %}
 <head>
-    {% leaflet_js %}
-    {% leaflet_css %}
+  {% leaflet_js %}
+  {% leaflet_css %}
 
-    <link rel="stylesheet" href="{% static 'css/leaflet/leaflet_map.css' %}">
-    <script src="{% static 'js/leaflet/leaflet_map.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/leaflet/leaflet_map.css' %}">
+  <script src="{% static 'js/leaflet/leaflet_map.js' %}"
+      defer
+      data-url="{% url 'planner:gis_data' %}">
+  </script>
 </head>
 
 <div id="map">
