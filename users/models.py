@@ -71,7 +71,7 @@ class Profile(models.Model):
     tag = models.CharField(max_length=16, default=None, null=True)
     bio = models.CharField(max_length=1024, default=None, null=True)
     profile_image = models.ImageField(
-        default='default_profile.png', upload_to=user_directory_path
+        default="default_profile.png", upload_to=user_directory_path
     )
 
     def __str__(self):

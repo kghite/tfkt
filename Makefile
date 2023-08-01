@@ -1,3 +1,4 @@
+.PHONY: devel-install devel-tidy devel-format devel-makemigrations devel-server devel-up isntall check-deploy
 # Development
 
 devel-install:
